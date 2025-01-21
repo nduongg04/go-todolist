@@ -1,0 +1,42 @@
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Output directories
+bin/
+dist/
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Prisma
+node_modules/
+migrations/
+*.db
+*.db-journal
+
+# Prisma generated files
+**/prisma/db/
+generated/
+
+# Dependency directories
+vendor/
+
+# Debug logs
+*.log
+debug/

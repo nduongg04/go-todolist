@@ -1,0 +1,31 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  // uncomment next line if you use Prisma <5.10
+  // directUrl = env("DATABASE_URL_UNPOOLED")
+}
+generator db {
+  provider = "go run github.com/steebchen/prisma-client-go"
+}
+
+model Todo {
+  id String @id @default(cuid())
+  title String
+  description String
+  completed Boolean @default(false)
+  user User @relation(fields: [userId], references: [id])
+  userId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  password String
+  username String
+  todos Todo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
